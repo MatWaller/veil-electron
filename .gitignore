@@ -1,0 +1,9 @@
+# Ignore Node Modules
+node_modules
+
+# Ignore Parcel Cache
+.cache
+
+# Ignore Electron, React & Parcel Builds
+build
+dist

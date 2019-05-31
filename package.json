@@ -1,0 +1,74 @@
+{
+  "name": "veil-electron",
+  "version": "1.0.0",
+  "description": "Electron container for applications built ontop of the Veil blockchain.",
+  "main": "src/electron.js",
+  "scripts": {
+    "react-start": "parcel -p 3000 index.html --out-dir build",
+    "react-build": "parcel build index.html --out-dir build --public-url ./",
+    "electron-build": "electron-builder -mwl",
+    "clean-build": "rm -rf build/ .cache dist/",
+    "build": "yarn clean-build && yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matwaller/veil-electron.git"
+  },
+  "keywords": [
+    "electron",
+    "veil",
+    "veil-project",
+    "blockchain",
+    "wallet",
+    "blockchain",
+    "tools",
+    "cryptocurrency"
+  ],
+  "author": "Mat Waller <mat@wallercrypto.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matwaller/veil-electron/issues"
+  },
+  "homepage": "./",
+  "dependencies": {
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "semantic-ui-css": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^5.0.2",
+    "electron-builder": "^20.41.0",
+    "parcel-bundler": "^1.12.3",
+    "wait-on": "^3.2.0"
+  },
+  "build": {
+    "appId": "com.boskysoft",
+    "files": [
+      "src/electron.js",
+      "src/assets/*",
+      "build/**/*"
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/logo.png"
+     },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/logo.png"
+     },
+    "linux": {
+      "target": "deb",
+      "icon": "src/assets/logo.png",
+      "category": "Development"
+    }
+  }
+}
